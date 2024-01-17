@@ -1,0 +1,30 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_dashboard_revus_pub_scientifiques" model="ir.ui.view">
+        <field name="name">dashboard.revus_pub_scientifiques</field>
+        <field name="model">revue.article</field>
+        <field name="arch" type="xml">
+            <dashboard>
+                <widget name="article_count" title="Total Articles" model="revue.article"/>
+                <chart name="article_status_chart" title="Article Status Distribution" model="revue.article">
+                    <field name="status"/>
+                </chart>
+                <list name="latest_articles" title="Latest Submitted Articles" model="revue.article">
+                    <field name="name"/>
+                    <field name="status"/>
+                    <field name="publication_date"/>
+                </list>
+            </dashboard>
+        </field>
+        <field name="type">qweb</field>
+    </record>
+    
+    <record id="action_dashboard_revus_pub_scientifiques" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">ir.ui.view</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_dashboard_revus_pub_scientifiques"/>
+    </record>
+    <menuitem name="Revus Publiques Scientifiques" id="Revus_Publiques_Scientifiques_menu"/>
+    <menuitem name="Dashboard" id="dashboard_menu" parent="Revus_Publiques_Scientifiques_menu" action="action_dashboard_revus_pub_scientifiques"/>
+</odoo> -->

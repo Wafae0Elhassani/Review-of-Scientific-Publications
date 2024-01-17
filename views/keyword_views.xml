@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_keyword_tree" model="ir.ui.view">
+        <field name="name">revue.keyword.tree</field>
+        <field name="model">revue.keyword</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="articles" widget="many2many_tags" class="oe_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_keyword_form" model="ir.ui.view">
+        <field name="name">revue.keyword.form</field>
+        <field name="model">revue.keyword</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Enregistrer" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="Nom du mot-clé"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="articles" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="keyword_menu_action" model="ir.actions.act_window">
+        <field name="name">Mots-clés</field>
+        <field name="res_model">revue.keyword</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Revus Publiques Scientifiques" id="Revus_Publiques_Scientifiques_menu"/>
+    <menuitem name="Mots-clés" id="keyword_menu" parent="Revus_Publiques_Scientifiques_menu" action="keyword_menu_action"/>
+</odoo>

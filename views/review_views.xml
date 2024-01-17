@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_review_tree" model="ir.ui.view">
+        <field name="name">revue.review.tree</field>
+        <field name="model">revue.review</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reviewer"/>
+                <field name="article_id"/>
+                <field name="comments"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_review_form" model="ir.ui.view">
+        <field name="name">revue.review.form</field>
+        <field name="model">revue.review</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Enregistrer" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reviewer"/>
+                        </group>
+                        <group>
+                            <field name="article_id"/>
+                        </group>
+                        <group>
+                            <field name="status"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Commentaires">
+                            <field name="comments"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="review_menu_action" model="ir.actions.act_window">
+        <field name="name">Revus</field>
+        <field name="res_model">revue.review</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Revus Publiques Scientifiques" id="Revus_Publiques_Scientifiques_menu"/>
+    <menuitem name="Revus" id="review_menu" parent="Revus_Publiques_Scientifiques_menu" action="review_menu_action"/>
+</odoo>

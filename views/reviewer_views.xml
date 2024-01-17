@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_reviewer_tree" model="ir.ui.view">
+        <field name="name">revue.reviewer.tree</field>
+        <field name="model">revue.reviewer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Nom"/>
+                <field name="email" string="Email"/>
+                <field name="articles_reviewed" string="Articles révisés" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_reviewer_form" model="ir.ui.view">
+        <field name="name">revue.reviewer.form</field>
+        <field name="model">revue.reviewer</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Enregistrer" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="articles_reviewed" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_reviewer_kanban" model="ir.ui.view">
+        <field name="name">revue.reviewer.kanban</field>
+        <field name="model">revue.reviewer</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="image" widget="image" class="oe_avatar oe_kanban_avatar"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_image" style="width: 50px; height: 50px;">
+                                <field name="image" widget="image" class="oe_avatar oe_kanban_avatar"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                                <field name="articles_reviewed" widget="many2many_tags"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="reviewer_menu_action" model="ir.actions.act_window">
+        <field name="name">Réviseurs</field>
+        <field name="res_model">revue.reviewer</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem name="Revus Publiques Scientifiques" id="Revus_Publiques_Scientifiques_menu"/>
+    <menuitem name="Réviseurs" id="reviewer_menu" parent="Revus_Publiques_Scientifiques_menu" action="reviewer_menu_action"/>
+</odoo>
